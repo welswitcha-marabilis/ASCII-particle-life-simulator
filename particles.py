@@ -30,13 +30,15 @@ class Particle:
         self.particles = particles
     
 
-    def create_matrix_rel_to_self(self, vector_force_range: float | int, ) -> tuple[tuple[int, float], ...]: # tuple[int, float] for however long self.particles is
+    def create_matrix_rel_to_self(self, force_range: float | int, ) -> tuple[tuple[int, float], ...]: # tuple[int, float] for however long self.particles is
         """
         Docstring for create_matrix_rel_to_self
         
         :param self: Description
+        :param force_range: Description
+        :type force_range: float | int
         :return: Description
-        :rtype: tuple[tuple[int, float]]
+        :rtype: tuple[tuple[int, float], ...]
 
         the reutrned tuple contains:
         - tuples for each index into self.particles
@@ -46,13 +48,10 @@ class Particle:
         """
 
         final_matrix = [
-        (i, choice([1, -1]) * random() * vector_force_range)
+        (i, choice([1, -1]) * random() * force_range)
         for i in range(len(self.particles))
         ]
         return final_matrix
-
-
-    from math import sqrt
 
     def get_current_velocity(
         self_index: int,
@@ -135,7 +134,9 @@ class Particle:
 
         return new_speed, dirX, dirY
     
-    
+
+if __name__ == '__main__':
+    pass
 
 
                     
